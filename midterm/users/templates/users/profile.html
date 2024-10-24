@@ -1,0 +1,102 @@
+<!-- {% load static %}
+<style>
+.bekarys-profile-header {
+    background: linear-gradient(135deg, #1d3557, #457b9d);
+    color: #f1faee;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bekarys-profile-header h2 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.post-card {
+    background-color: #f1faee;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+.post-card .card-body {
+    padding: 20px;
+}
+
+.post-card-title {
+    color: #1d3557;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.post-card-footer {
+    background-color: #457b9d;
+    color: #f1faee;
+    text-align: right;
+    padding: 10px 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.post-card-footer a {
+    color: #f1faee;
+    text-decoration: none;
+}
+
+.post-card-footer a:hover {
+    color: #a8dadc;
+    text-decoration: underline;
+}</style> -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}'s Profile</title>
+    <link rel="stylesheet" href="{% static 'users/style.css' %}">
+</head>
+<body>
+    <div class="bekarys-profile-header">
+        <h2>Welcome to {{ user.username }}'s Profile & Blog Section</h2>
+        <p>Explore the thoughts and ideas shared by {{ user.username }}</p>
+    </div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <h3 class="mb-4 text-center">{{ user.username }}'s Posts</h3>
+
+                {% if user.posts.exists %}
+                    {% for post in user.posts.all %}
+                        <div class="card post-card">
+                            <div class="card-body">
+                                <h4 class="post-card-title">{{ post.title }}</h4>
+                                <p class="text-muted small">Published on {{ post.created_at|date:"F j, Y, g:i a" }}</p>
+                                <hr>
+                                <p class="card-text">{{ post.content|linebreaksbr|truncatewords:50 }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-info text-center" role="alert">
+                        No posts to display. Start sharing your thoughts with the world, {{ user.username }}!
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary">Logout</button>
+    </form>
+</body>
+</html>

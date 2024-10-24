@@ -1,0 +1,52 @@
+
+.bekarys-profile-header {
+    background: linear-gradient(135deg, #1d3557, #457b9d);
+    color: #f1faee;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bekarys-profile-header h2 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.post-card {
+    background-color: #f1faee;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+.post-card .card-body {
+    padding: 20px;
+}
+
+.post-card-title {
+    color: #1d3557;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.post-card-footer {
+    background-color: #457b9d;
+    color: #f1faee;
+    text-align: right;
+    padding: 10px 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.post-card-footer a {
+    color: #f1faee;
+    text-decoration: none;
+}
+
+.post-card-footer a:hover {
+    color: #a8dadc;
+    text-decoration: underline;
+}
